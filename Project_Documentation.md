@@ -6,10 +6,14 @@
 Consider the following elements when developing your functional requirements. 
 
 Data Retrieval: What does the user need to be able to view in the system? 
+The user needs to be able to view
+
 
 User Interface: What is required for the user to interact with the system?
 
+
 Data Display: What information does the user need to obtain from the system? What needs to be output for the user?
+
 
 ### Non Functional requirements 
 Consider the following elements when developing your non-functional requirements:
@@ -24,48 +28,49 @@ Usability and Accessibility: How easy to navigate does the system need to be? Wh
 What does the system actually NEED to do?
 
 User Requirements
-
+The 
 What does the user need to be able to do? List all specifications here.
 
 Inputs & Outputs
-
+The system will mainly need to accept mouse/touchpad clicks and spacebar and enter. It will need to output diffrent collections of pixel art in order to 
 What inputs will the system need to accept and what outputs will it need to display?
 
 Core Features
-
+At it's core it needs to provide a fun card game experience that runs.
 At its core, what specifically does the program need to be able to do?
 
 User Interaction
 
 How will users interact with the system (e.g. command-line, GUI?) and what information will it need to provide to help users navigate?
-
+The users will interact with the game in a logical but simple GUI. A detailed readme will explain how to use the program, furthermore 
 Error Handling
-
+The game will print errors in the terminal and provide game infomation for debugginh purposes.
 What possible errors could you face that need to be handled by the system?
 ### Non Functional Specifications
 
 Performance
 
 How quickly should we try to get the system to perform tasks, what efficiency is required to maintain user engagement? How can we ensure our program remains efficient?
-
+I need to code the game to remain at a consistent 60fps. 
 Useability / Accessibility
-
+If I have time I will code detaileed acessibility settings.
 How might you make your application more accessible? What could you do with the User Interface to improve usability?
 
 Reliability
 
 What could perhaps not crash the whole system, but could be an issue and needs to be addressed? Data integrity? Illogical calculation? Menu navigation going to wrong places?
+
 ## Use case diagram
 Example of a Use Case - Rock Collection (REQUIRED)
-Actor: User (Geologist / Rock Nerd)
+Actor: User
 
-Preconditions: Internet access; API with rock/mineral data is available.
+Preconditions: A suitable operating system that can run .exe files or alternatively python files. 
 
 Main Flow:
 
-Search Rock/Mineral – User enters a rock/mineral name (e.g., Obsidian, Quartz); system retrieves and displays details.
+Begin - User selects the option to play. (Maybe select difficulty)
 
-Store Rock – User adds the rock to their collection; system confirms storage.
+Store Rock – User draws
 
 Compare Rocks – User selects rocks; system retrieves and displays comparisons (e.g., hardness, composition, rarity).
 
