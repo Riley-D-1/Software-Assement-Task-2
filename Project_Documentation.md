@@ -1,93 +1,108 @@
 # Software Eginnering Task 2
 ### By Riley Dowse
 # Sprint 1
+
+## Task Definition 
+
+TBC
+
 ## Requirements definition
 ### Functional requirements 
-Consider the following elements when developing your functional requirements. 
-
-Data Retrieval: What does the user need to be able to view in the system? 
-The user needs to be able to view
-
-
-User Interface: What is required for the user to interact with the system?
-
-
-Data Display: What information does the user need to obtain from the system? What needs to be output for the user?
+- Users must be able to verse a bot in a fun and interactive GUI and play Joker's Judgement.
+- The system must have random drawing and deck splitting
+- The system must be able to track players health and card inventories.
+- The system must follow the rules of Joker's judgement
+- The system must clearly show who is the winner and loser.
 
 
 ### Non Functional requirements 
-Consider the following elements when developing your non-functional requirements:
+- The system must respond quickly to the players actions
+- It must load within 3 seconds
+- The game must maintain smooth and responsive
+- The controls must be simple yet functional and easy to pick up
+- Have settings to adapt and modify the user's experience
+- The system must be reliable and not crash
+- The game should handle errors gracefully and provide clear error messages.
+- The game must have clear documentation and install steps.
+- The games rules must be clear and understandable.
 
-Performance: How well does the system need to perform? 
-
-Reliability: How reliable does the system and data need to be?
-
-Usability and Accessibility: How easy to navigate does the system need to be? What instructions will we need for users to access the system?
 ## Determining Specifications
 ### Functional Specifications
 What does the system actually NEED to do?
 
 User Requirements
-The 
-What does the user need to be able to do? List all specifications here.
+-- Users must be able to verse a bot in a fun and interactive GUI and play Joker's Judgement.
+- The user needs to be able to input their actions and receive an output by the system informing them of their acitons.
 
 Inputs & Outputs
-The system will mainly need to accept mouse/touchpad clicks and spacebar and enter. It will need to output diffrent collections of pixel art in order to 
-What inputs will the system need to accept and what outputs will it need to display?
+- The system needs to have clear and responsive inputs that correctly match the users intent.
+- The system needs to have simple but clear outputs that clearly display the game state to the user
+- The input system has to be logical and easy to understand and pickup
 
 Core Features
-At it's core it needs to provide a fun card game experience that runs.
-At its core, what specifically does the program need to be able to do?
+- At it's core it needs to provide a fun card game experience that follows the rules of Joker's judgement
+- It needs to be an exciting card game played against a challenging but fun bot.
+- The system needs to be enticing to a wide variety of players.
+
 
 User Interaction
-
-How will users interact with the system (e.g. command-line, GUI?) and what information will it need to provide to help users navigate?
-The users will interact with the game in a logical but simple GUI. A detailed readme will explain how to use the program, furthermore 
+- The users will interact with the game in a logical but simple GUI. A detailed readme will explain how to use the program, furthermore the rules of the game will be clearly laid out in a seperate readme.
+- The user
 Error Handling
-The game will print errors in the terminal and provide game infomation for debugginh purposes.
+- The game will print errors in the terminal and provide game infomation for debugginh purposes.
+- I will also list errors with the program in the readme and provide clear and achievable solutions to them
 What possible errors could you face that need to be handled by the system?
 ### Non Functional Specifications
 
 Performance
-
+- The system needs to respond quickly to the users input and be fluid and smooth at all times
+- The system must remain at a consitent 60fps
+- The system must load all aspects in less than 3 seconds 
 How quickly should we try to get the system to perform tasks, what efficiency is required to maintain user engagement? How can we ensure our program remains efficient?
-I need to code the game to remain at a consistent 60fps. 
+
 Useability / Accessibility
-If I have time I will code detaileed acessibility settings.
+- My readme and installation guide will make it easy for anyone to install my game and cater to a wide variety of technolgical knowledge levels.
+- If I have time I will code more acessibility settings.
 How might you make your application more accessible? What could you do with the User Interface to improve usability?
 
 Reliability
-
-What could perhaps not crash the whole system, but could be an issue and needs to be addressed? Data integrity? Illogical calculation? Menu navigation going to wrong places?
+- I will code clear error messages and adress all 
+- The users data does not disclose any personal infomation and will be kept from the AI bot to 
 
 ## Use case diagram
-Example of a Use Case - Rock Collection (REQUIRED)
 Actor: User
 
-Preconditions: A suitable operating system that can run .exe files or alternatively python files. 
+Preconditions: A suitable operating system that can run .exe files or alternatively an IDE that can run python files. 
 
 Main Flow:
+- Begin - User selects the option to play. 
 
-Begin - User selects the option to play. (Maybe select difficulty)
+- Setup – The system equally splits a deck of cards that have 
 
-Store Rock – User draws
+- Draw Card – User clciks the draw pile 
 
-Compare Rocks – User selects rocks; system retrieves and displays comparisons (e.g., hardness, composition, rarity).
+- Play Card- User selects a number card or an ability card to play
 
-Visualise Data – System generates a graph comparing selected rocks.
+- Attack - User attacks with a number card leading the system to defennd
 
-Remove Rock – User deletes a rock from the collection; system updates storage.
+Postconditions: Turn changes to the system , the user draws a card and play's a card. 
 
-Postconditions: Rock data is retrieved, stored, compared, or removed successfully.
-Add use case diagram here
 
 ## Design
-Add storyboard and dataflow diagram  here (insert as images)
+Storyboard
+![Alt text](images/Storyboard.png)   
+Data Frame Diagram Level 0
 
+![Alt text](images/dfd-0.png)   
+Data Frame Diagram Level 1
+![Alt text](images/dfd-1.png)
 ### Gantt Chart
-
+![Alt text](images/Gantt-chart.png)
 ## Build and Test
+```python
 
+
+```
 
 ## Review
 End of Sprint Review Questions
@@ -106,3 +121,23 @@ End of Sprint Review Questions
 7. Explain the improvements that should be made in the next stage of development.
 
 8. Include both feature enhancements and refinements to code quality or structure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Credit
+
+The Icon inspiration comes from https://drawsgood.itch.io/8bit-deck-card-assets. 
+I made my own much smaller version that was heavily influenced by the asset. 

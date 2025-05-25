@@ -1,11 +1,87 @@
-1. Setup:
-Split the deck (with the Jokers) evenly for all the players
-Place the evenly split deck in each players area
-Each Player will now draw 3 Cards and can place any normal cards on their board (No Jacks, Jokers,Kings or Queens)
-2. Gameplay:
-Decide who is going first. This is the players choice but an easy way to decide is the person to the right of the person who shuffled the deck.
+# Joker's Judgement Rules
+## Setup:
+1. Shuffle the deck
+2. Split the deck (with the Jokers) evenly for all the players.
+3. Place the evenly split deck in each player's draw pile face down.
+4. Each Player will now draw 3 Cards keeping them hidden from the other players
+5. Decide who is going first. This is the player's choice but an easy way to decide is the person to the right of the person who shuffled the deck. (In the first round everyone but the last player misses the attack phase)
+6. Use some kind of counter (Dice is a good option) to keep track of everyone HP which starts on 20
+## Gameplay:
+On your turn:
+1. Draw 1 card from your pile
+2. Play 1 card from your hand
+3. (Optional) Attack (See rules below about attack and defending)
 
-3. How to Win:
-If a player reached 0 hitpoints they are out. Score everyone with a point and the person who knocked them out an extra point. 
 
-4. Additional Rules:
+Play continues clockwise.
+
+
+
+
+# Meet the cards!
+## Fighter Cards (2-10, A)
+#### Number Cards (2-10):
+- Each face value is their attack and defense statistics. (E.g 3 has an attack value of 3 and a defense value of 3)
+- These are your core fighters. They are very common but very important to winning
+
+
+#### Ace (A):
+- Worth 11 in attack and 11 in defense.
+- Stronger than most, he's a big boi juggernaut who is almost unkillable
+## Ability Cards (K, Q, J, Joker)
+
+
+#### King (K):
+- You can attack twice
+- Can shift the tides in battle.
+#### Queen (Q):
+- Heels for 5 hp.
+- Probably the most important card so use her wisely.
+#### Jack (J):
+- Draw 2 cards when played
+- Reinforcements galore!
+#### Joker (Chaos GOD)
+- When played it's a board wipe
+- **All cards in play** are discarded
+- HP, draw piles and hands for the players remains the same
+- This is the "Nuke the board". Unleash it at your own risk (friendships/relationships may be part of the explosion)
+
+
+
+
+## How to Win:
+### Last player standing wins
+Player elimination:
+- Each player starts with 20 hp
+- When a player reaches equal to or less than 0 (see attack and defense for how you deal and defend against damage), they are eliminated.
+Once eliminated they discard all cards and take no further action.
+
+
+
+
+*(If playing in a group, continue to score everyone 1 and the person who got the knockout 2) Also work out a number of games and play rock paper scissors if there is a tie when you want to finish.
+
+
+## Combat and defense
+On your turn, you may attack once with a **Fighter card** on your playing space. Your opponent may defend with a fighter card in their playing space.
+
+
+If no defense is played (or they can't play a defence):
+- The attacker's face value is subtracted from the opponent's HP.
+
+
+
+
+If a defense is played :
+- Compare face value
+- The weakest card is deceased (Goes to Discard pile)
+- Tied? Both cards die ( Both to Discard pile)
+- Strongest card survives and stays on the battlefield.
+1 attack per turn.
+
+
+## Additional Rules:
+If you reach the bottom of your pile simply shuffle all cards in the discard and place them face down in your draw pile and then continue playing
+
+
+
