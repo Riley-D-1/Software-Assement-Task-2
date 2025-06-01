@@ -1,5 +1,5 @@
 # Software-Assessment-Task-1
-### Data Science Assessment Task: Solar Sonar
+### Data Science Assessment Task: Joker's Judgement
 ## Objective
 TBC
 
@@ -10,11 +10,7 @@ TBC
 
 ## Requirements
 Pygame:
-- A python library for making games
-
-Time:
-- A time library that 
-
+- A python library for making video games in python.
 
 ## How to use the program
 1. Firstly if you are reading this on github you will need to open it in a suitable IDE with python 3.11 or higher installed.
@@ -30,12 +26,11 @@ pip install -r requirements.txt
 
 5. Follow the terminal instructions and open the link. (Shown below)
 
+6. The program is running and you can navigate around the GUI. 
 
-6. The program is running and you can navigate around the GUI. Infomation on how to understand the parameters and API responses are in the Help page. Further infomation about the diffrent NASA data and a reiteration of the programs focus are found on the About page.
+7. Once you are finished click the exit button (go to the menu by clicking ESC)
 
-7. Once you are finished click into the terminal and then press Ctrl+C at the same time and wait for the errors to stop. Once they finish the locally hosted website has closed. Please note that your history will be saved locally, if you want to clear it after the GUI you can simply delete history.txt's contents. However do not delete the file itself.
-
-## Alternatively 
+## Alternatively (Not available for the first sprint)
 
 1. Locate the exe file and click the download icon on github after selecting it.
 
@@ -44,4 +39,5 @@ pip install -r requirements.txt
 3. You likely will have to say yes, I trust the exe from an unknown publisher. The exe will then run the GUI which you can navigate around in and use.
 
 ## Common Errors and Solutions
-Lots of bugs as this is simply a UI you can navigate through. All of the game logic is not functional.
+- Only a UI you can navigate through. All of the game logic is not functional.
+- DOES NOT WORK IN OTHER RESOLUTIONS THAT ARE NOT 1080p
