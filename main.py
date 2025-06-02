@@ -1,7 +1,6 @@
 import pygame
-# Intergration to be added 
-#import game_logic as g
-#from game_logic import *
+import game_logic as g
+from game_logic import *
 from pygame import *
 import time as t
 # Imports 
@@ -29,7 +28,6 @@ def menu_draw():
 	""" Draws the menu screen for the game. 
 	The function is simply a cleaner way to call it when required as compared to dumping the text block inside the core loop.
 	"""
-
 	screen.fill((47, 158, 68)) # The green colour used in the program.
 	width = 750
 	height = 100
@@ -53,21 +51,21 @@ def menu_draw():
 	screen.blit(quit, quit_text)
 
 def main():
+
 	""" The main game function. 
 	The function is used to cleanly call the loop, as I said above. I will likely call other functions or change other things to a class in later sprints.
 	"""
 	screen.fill((47, 158, 68))
 	Height = 125
 	Width = 100
-	player_draw_pile = pygame.draw.rect(screen, (25,113,194), (20, 700, Width, Height))
-	bot_draw_pile = pygame.draw.rect(screen, (224,49,49), (1820, 300, Width, Height))
+	pygame.draw.rect(screen, (25,113,194), (20, 700, Width, Height))
+	pygame.draw.rect(screen, (224,49,49), (1820, 300, Width, Height))
 	card1 = pygame.draw.rect(screen, (255,255,255), (800+0*(110),930 , Width, Height))
 	card2 =  pygame.draw.rect(screen, (255,255,255), (800+1*(110),930 , Width, Height))
 	card3 =  pygame.draw.rect(screen, (255,255,255), (800+2*(110),930 , Width, Height))
 	card1_bot = pygame.draw.rect(screen, (224,49,49), (800+0*(110),50 , Width, Height))
 	card2_bot =  pygame.draw.rect(screen, (224,49,49), (800+1*(110),50 , Width, Height))
 	card3_bot =  pygame.draw.rect(screen, (224,49,49), (800+2*(110),50 , Width, Height))
-	played_card_bot =  pygame.draw.rect(screen, (224,49,49), (800+1*(110),300 , Width, Height))
 	# Importantly the bots knowledge doesn't exist yet and won't until the game is devolped further in later sprints.
 	played_card =  pygame.draw.rect(screen, (255,255,255), (800+1*(110),700 , Width, Height))
 	players_health = title_font.render(str(health_player), 1, (25,113,194))
@@ -82,14 +80,7 @@ def main():
 	# Leftover debugging, leaving as will need in further dev sprints
 	#print(pos)
 	# Collisoin dectetion 
-	if player_draw_pile.collidepoint(pos) and pressed:
-		screen.fill((47, 158, 68))
-		filler = title_font.render("Draw Logic goes here", 1, (255,255,255))
-		text_rect_2 = filler.get_rect(center=(w//2,150))
-		screen.blit(filler, text_rect_2)
-		pygame.display.flip()
-		t.sleep(2)
-	elif card1.collidepoint(pos) and pressed:
+	if card1.collidepoint(pos) and pressed:
 		screen.fill((47, 158, 68))
 		filler = title_font.render("Card Play Logic goes here", 1, (255,255,255))
 		text_rect_2 = filler.get_rect(center=(w//2,150))
@@ -131,6 +122,7 @@ def main():
 		screen.blit(win_text, text_rect_idk)
 		pygame.display.flip()
 		t.sleep(2)
+
 def options():
 	# See above explanmations, to be fleshed out later on to provide the user with a better experience.
 	screen.fill((47, 158, 68))

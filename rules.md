@@ -8,9 +8,8 @@
 6. Use some kind of counter (Dice is a good option) to keep track of everyone HP which starts on 20
 ## Gameplay:
 On your turn:
-1. Draw 1 card from your pile
-2. Play 1 card from your hand
-3. (Optional) Attack (See rules below about attack and defending)
+1. Draw 1 card from your pile (This will be auto done)
+2. Play 1 card from your hand (See rules below about attack and defending)
 
 
 Play continues clockwise.
@@ -42,8 +41,8 @@ Play continues clockwise.
 - Reinforcements galore!
 #### Joker (Chaos GOD)
 - When played it's a board wipe
-- **All cards in play** are discarded
-- HP, draw piles and hands for the players remains the same
+- **All cards in player's hands** are discarded
+- HP and draw piles for the players remains the same
 - This is the "Nuke the board". Unleash it at your own risk (friendships/relationships may be part of the explosion)
 
 
@@ -63,7 +62,7 @@ Once eliminated they discard all cards and take no further action.
 
 
 ## Combat and defense
-On your turn, you may attack once with a **Fighter card** on your playing space. Your opponent may defend with a fighter card in their playing space.
+On your turn, you may attack once with a **Number Card** in your hand. Your opponent may defend with a fighter card in own hand.
 
 
 If no defense is played (or they can't play a defence):
