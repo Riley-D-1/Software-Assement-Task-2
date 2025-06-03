@@ -60,14 +60,14 @@ def main():
 	Width = 100
 	pygame.draw.rect(screen, (25,113,194), (20, 700, Width, Height))
 	pygame.draw.rect(screen, (224,49,49), (1820, 300, Width, Height))
-	card1 = pygame.draw.rect(screen, (255,255,255), (800+0*(110),930 , Width, Height))
+	"""card1 = pygame.draw.rect(screen, (255,255,255), (800+0*(110),930 , Width, Height))
 	card2 =  pygame.draw.rect(screen, (255,255,255), (800+1*(110),930 , Width, Height))
 	card3 =  pygame.draw.rect(screen, (255,255,255), (800+2*(110),930 , Width, Height))
 	card1_bot = pygame.draw.rect(screen, (224,49,49), (800+0*(110),50 , Width, Height))
 	card2_bot =  pygame.draw.rect(screen, (224,49,49), (800+1*(110),50 , Width, Height))
 	card3_bot =  pygame.draw.rect(screen, (224,49,49), (800+2*(110),50 , Width, Height))
+	"""
 	# Importantly the bots knowledge doesn't exist yet and won't until the game is devolped further in later sprints.
-	played_card =  pygame.draw.rect(screen, (255,255,255), (800+1*(110),700 , Width, Height))
 	players_health = title_font.render(str(health_player), 1, (25,113,194))
 	text_rect_player = players_health.get_rect(center=(100,980))
 	screen.blit(players_health, text_rect_player)
@@ -77,7 +77,42 @@ def main():
 	pygame.display.flip()
 	pos = pygame.mouse.get_pos()
 	pressed = pygame.mouse.get_pressed()[0]
-	# Leftover debugging, leaving as will need in further dev sprints
+	
+	user = Player(0)
+	bot = Player(1)
+	players=["Player","Bot"]
+	for i in range(3):
+		user.add_card(draw(user.deck()))
+		bot.add_card(draw(bot.deck()))
+	user.check_hand()
+	bot.check_hand()
+	turn = random.choice(players)
+	round_num = 1
+	while bot.check_hp() and user.check_hp() > 0:
+		if turn == "Player":
+			if user.hand_size() < 10:
+				user.add_card(draw(user.deck()))
+				print("yas")
+				print(user.check_hand())
+				#play(chosen_card,round_num,bot.check_hand(),user)
+			else:
+				#play(chosen_card,round_num,bot.check_hand())
+				round_num+=1
+		elif turn == "Bot":
+			t.sleep(5)
+			if bot.hand_size() < 10:
+				bot.add_card(draw(bot.deck()))
+				print(bot.check_hand())
+				chosen_card = random.choice
+				#play(chosen_card,round_num,user,bot)
+
+			else:
+				#play(chosen_card,round_num,user,bot))
+				print("")
+		else:
+			print("Bug")
+		
+# Leftover debugging, leaving as will need in further dev sprints
 	#print(pos)
 	# Collisoin dectetion 
 	if card1.collidepoint(pos) and pressed:
