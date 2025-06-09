@@ -35,7 +35,6 @@ class Ability_Card(Card):
 class Deck:
 	def __init__(self):
 		self.card_deck = []
-		self.create_deck()
 	def create_deck(self):
 		for suit in suits:
 			for rank in ranks:	
@@ -47,12 +46,13 @@ class Deck:
 		self.card_deck.append(Ability_Card("Joker","Red"))
 		self.card_deck.append(Ability_Card("Joker","Black"))
 		return self.card_deck
+	
 
 class Player:
-	def __init__(self,num):
+	def __init__(self,deck):
 		self.hp = 20
-		self.hand = []
-		self.deck_ = start()[num]
+		self.hand_ = []
+		self.deck_ = deck
 	def check_hp(self):
 		return self.hp
 	def damage_hp(self,damage):
@@ -60,10 +60,15 @@ class Player:
 	def heal(self):
 		self.hp += 5
 	def add_card(self,card):
-		self.hand.append(card)
+		self.hand_.append(card)
 	def check_hand(self):
-		for card in self.hand:
+		for card in self.hand_:
 			print(card)
+	def hand(self):
+		temp_list = []
+		for card in self.hand_:
+			temp_list.append(card)
+		return temp_list
 	def deck(self):
 		temp_list = []
 		for card in self.deck_:
@@ -74,6 +79,7 @@ class Player:
 	def remove_card(self):
 		discard = random.choice(self.deck_)
 		self.deck_.remove(discard)
+
 def shuffle(deck):
 	random.shuffle(deck)
 
@@ -89,25 +95,26 @@ def info(deck):
 		
 # Game start logic
 def start():
-	new_deck = Deck()
-	game_cards= new_deck.create_deck()
+	deck = Deck()
+	game_cards = deck.create_deck()
 	shuffle(game_cards)
-	Players_deck = game_cards[:len(game_cards)//2]
-	Bots_deck = game_cards[len(game_cards)//2:]
-	return Players_deck, Bots_deck 
+	return game_cards 
 
 def play(chosen_card,turn_num,defender,player):
 	chosen_card.type()
 	if chosen_card.type() == "Number":
 		if turn_num == 1:
 			print("First round, you can't attack")
+			
 		else:
 			#Ask defender for defence card
 			# defence_card
 			#defemder
 			attacker_vaule = chosen_card.vaule()
 			# defender_card.vaule
-			#if attacker_vaule == defender_card.vaule()
+			#if attacker_vaule == defender_card.vaule():
+			#elif attacker card < defender_card:
+			#else:
 	else:
 		if chosen_card.card_ability() == "Jack":
 			player.add_card(draw(player.deck()))	

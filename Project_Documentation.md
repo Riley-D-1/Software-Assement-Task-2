@@ -334,6 +334,148 @@ The next stage of development must hit most if not all of the functional criteri
 # KEYNOTE! THE PROGRAM DOES NOT CURRENTLY WORK IN RESOLUTIONS THAT ARE NOT 1080P (1920 PIXELS WIDE BY 1080 PIXELS TALL)
 
 
+
+
+
+
+# Sprint 2
+
+
+## Design
+
+### Structure Chart
+
+### Algorithms
+
+
+#### Main Routine
+###### Flowchart
+![Alt text](images/Main_flowchart.png)  
+
+##### Psudeocode
+```
+BEGIN Joker's Judement
+    WHILE Program is running
+        IF Game State = Menu
+			Menu()
+			IF MOS_Pos = Quit Button and Clicked 
+				Running = False
+			ELIF MOS_Pos = Play Button and Clicked 
+			 	Game State = Playing
+			ELIF MOS_Pos = Options Button and Clicked 
+				Game State = Options
+			ENDIF
+        ELIF Game State = Options
+            Options()
+		ELIF Game State = Playing
+			Game()
+		ELSE
+			Error Handling
+        ENDIF
+    ENDWHILE
+END Joker's Judement 
+```
+#### Game loop Subroutinue
+
+###### Flowchart
+![Alt text](images/.png)  
+
+##### Psudeocode
+```
+
+```
+
+#### Options Subroutine
+
+###### Flowchart
+![Alt text](images/Options_flowchart.png)  
+
+##### Psudeocode
+```
+Begin Options
+WHILE Program is running
+		OUTPUT OPTION SCREEN
+		IF MOS_Pos = Help Button and Clicked 
+			Help
+		ELIF MOS_Pos = Play Button and Clicked 
+			Source
+		ELIF MOS_Pos = Toggle Music Button and Clicked 
+			Toggle Music
+		ELIF MOS_Pos = Main Menu Button and Clicked 
+			Running = False
+		ENDIF
+    ENDWHILE
+END Options
+```
+
+## Build and Test
+#### Game Logic
+```py
+
+```
+#### Main 
+```py
+
+```
+
+
+
+
+
+
+## End of Sprint Review Questions
+1. Evaluate how effectively your project meets the functional and non-functional requirements defined in your planning.
+
+Refer to specific criteria or expectations outlined in your requirements document.
+
+2. Analyse the performance of your program against the key use-cases you identified.
+
+Discuss whether the program behaves as expected and handles input/output as planned.
+
+3. Assess the quality of your code in terms of readability, structure, and maintainability.
+
+Consider naming conventions, use of functions, comments, and overall organisation.
+
+4. Explain the improvements that should be made in the next stage of development.
+
+Include both feature enhancements and refinements to code quality or structure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Credit
 
 
