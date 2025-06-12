@@ -10,6 +10,13 @@ class Card:
 		self.suit = suit
 	def card_info(self):
 		return self.rank,self.suit
+	def card_clicked(self,card,pos,clicked,bot_deck,user):
+		if card.collidepoint(pos) and clicked:
+			play(self.card_info(),bot_deck,user)
+	
+	def __str__(self):
+		return f"({self.rank}, '{self.suit}')"
+	def __repr__(self): return str(self)
 
 class Number_Card(Card):
 	def __init__(self, rank, suit):
@@ -47,7 +54,6 @@ class Deck:
 		self.card_deck.append(Ability_Card("Joker","Black"))
 		return self.card_deck
 	
-
 class Player:
 	def __init__(self,deck):
 		self.hp = 20
@@ -75,38 +81,29 @@ class Player:
 			temp_list.append(card.card_info())
 		return temp_list
 	def hand_size(self):
-		return len(self.hand)
-	def remove_card(self):
-		discard = random.choice(self.deck_)
-		self.deck_.remove(discard)
-
-def shuffle(deck):
-	random.shuffle(deck)
-
-def draw(deck): 
-	card = random.choice(deck)
-	deck.remove(card)
-	return card
-
-def info(deck):
-	for card in deck:
-		print(card.card_info())
-		print(card.type())
+		return len(self.hand_)
+	def draw(self): 
+		card = random.choice(self.deck_)
+		self.deck_.remove(card)
+		return card
+	def discard(self):
+		for card in self.hand_:
+			self.hand_.remove(card)
 		
+def shuffle(game_cards):
+	random.shuffle(game_cards)
+	return game_cards
+
 # Game start logic
 def start():
 	deck = Deck()
 	game_cards = deck.create_deck()
-	shuffle(game_cards)
-	return game_cards 
+	cards = shuffle(game_cards) 
+	return cards
 
-def play(chosen_card,turn_num,defender,player):
+def play(chosen_card,defender,player):
 	chosen_card.type()
 	if chosen_card.type() == "Number":
-		if turn_num == 1:
-			print("First round, you can't attack")
-			
-		else:
 			#Ask defender for defence card
 			# defence_card
 			#defemder
@@ -117,13 +114,17 @@ def play(chosen_card,turn_num,defender,player):
 			#else:
 	else:
 		if chosen_card.card_ability() == "Jack":
-			player.add_card(draw(player.deck()))	
-		if chosen_card.card_ability() == "King":
-			draw(defender(defender.remove()))
-		if chosen_card.card_ability() == "Queen":
+			player.add_card(player.draw())
+		elif chosen_card.card_ability() == "King":
+			defender.damage_hp(5)
+		elif chosen_card.card_ability() == "Queen":
 			player.heal()
 			round_num += 1
 			turn = "Bot"
+		else:
+			player.wipe()
+
+			
 
 
 			
