@@ -5,7 +5,7 @@ TBC
 
 
 ## Features
-- 
+- TBC
 
 
 ## Requirements
@@ -36,8 +36,7 @@ pip install -r requirements.txt
 
 2. In your browser locate the downloads and double click on the program. 
 
-3. You likely will have to say yes, I trust the exe from an unknown publisher. The exe will then run the GUI which you can navigate around in and use.
+3. You likely will have to say yes, I trust the exe from an unknown publisher. The exe will then run the program without needing any dependicies!
 
 ## Common Errors and Solutions
-- Only a UI you can navigate through. All of the game logic is not functional.
-- DOES NOT WORK IN OTHER RESOLUTIONS THAT ARE NOT 1080p
+- Imperfect but functioning game. I am working towards clearing up the game but most of the program is working correctly just going to make it easier to understand and use.

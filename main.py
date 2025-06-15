@@ -1,10 +1,6 @@
 import pygame
 from game_logic import *
-from game_logic import Player
-import game_logic as g
-from pygame import *
-from pygame.time import *
-import time as t
+
 # Imports 
 
 # Set up pygame
@@ -24,10 +20,25 @@ clock = pygame.time.Clock()
 windeath_font = pygame.font.SysFont("segoeprint", int(h*0.1))
 clock.tick(60)
 
-health_player = 20
-health_enemy = 20
 
-def update_hands(user,bot):
+def win():
+	screen.fill((255,255,255))
+	win_text = windeath_font.render("You win!", True, (0,0,0))
+	text_rect_idk = win_text.get_rect(center=(w//2,h//2))
+	screen.blit(win_text, text_rect_idk)
+	pygame.display.flip()
+
+def lose():
+		screen.fill((0,0,0))
+		win_text = windeath_font.render("You Lose!", True, (255,0,0))
+		text_rect_idk = win_text.get_rect(center=(w//2,h//2))
+		screen.blit(win_text, text_rect_idk)
+		pygame.display.flip()
+		
+
+def update_hands_hp(user,bot):
+	user.card_list_ = []
+	screen.fill((47, 158, 68))
 	Height = h*0.175
 	Width = w*0.075
 	for i ,card in enumerate(user.hand(), start =int(user.hand_size()//2*-1)):
@@ -40,13 +51,51 @@ def update_hands(user,bot):
 		card_info = card_font.render(str(card_text_info), 1, (0,0,0))
 		text_rect = card_info.get_rect(center=game_card.center)
 		screen.blit(card_info, text_rect)
+		user.card_list(game_card,card)
+		
 	pygame.display.flip()
 
 	for i , card in enumerate(bot.hand(),start = int(user.hand_size()//2*-1)):
 		pygame.draw.rect(screen, (224,49,49), (w*0.5+i*(180),h*0.05 , Width, Height))
 	pygame.display.flip()
+	bot_hp = str(bot.check_hp())
+	user_hp = str(user.check_hp()) 
+	players_health = title_font.render(user_hp, 1, (25,113,194))
+	text_rect_player = players_health.get_rect(center=(w*0.1,h*0.9))
+	screen.blit(players_health, text_rect_player)
+	enemy_health = title_font.render(bot_hp, 1, (224,49,49))
+	text_rect_enemy = enemy_health.get_rect(center=(w*0.9,h*0.1))
+	screen.blit(enemy_health, text_rect_enemy)
+	pygame.display.flip()
 
+def filter_duplicates(dict):
+	seen = set()
+	filtered_list = []
+	for item in dict:
+		rect = item["rect"]
+		rect_tuple = (rect.x,rect.y,rect.width,rect.height)
+		if rect_tuple not in seen:
+			seen.add(rect_tuple)
+			filtered_list.append(item)
+	return filtered_list
 
+def user_input(user):
+	cards = filter_duplicates(user.card_list_info())
+	while True:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				quit()
+			elif event.type == pygame.MOUSEBUTTONDOWN:
+				pygame.display.flip()
+				pos = pygame.mouse.get_pos()
+				pressed = pygame.mouse.get_pressed()[0]
+				for card in cards:
+					rect = card['rect']
+					vaule = card['vaule']
+					if rect.collidepoint(pos) and pressed == True:
+						return vaule
+		
+		
 def menu_draw():
 	""" Draws the menu screen for the game. 
 	The function is simply a cleaner way to call it when required as compared to dumping the text block inside the core loop.
@@ -83,85 +132,36 @@ def main(player_deck,bot_deck):
 	#pygame.draw.rect(screen, (25,113,194), (20, 700, Width, Height))
 	#pygame.draw.rect(screen, (224,49,49), (1820, 300, Width, Height))
 	# TO be removed -
-	"""
-	card1 = pygame.draw.rect(screen, (255,255,255), (800+0*(180),930 , Width, Height))
-	card2 =  pygame.draw.rect(screen, (255,255,255), (800+1*(180),930 , Width, Height))
-	card3 =  pygame.draw.rect(screen, (255,255,255), (800+2*(180),930 , Width, Height))
-	card1_bot = pygame.draw.rect(screen, (224,49,49), (800+0*(180),50 , Width, Height))
-	card2_bot =  pygame.draw.rect(screen, (224,49,49), (800+1*(180),50 , Width, Height))
-	card1_bot = pygame.draw.rect(screen, (224,49,49), (800+2*(180),50 , Width, Height))
-	card2_bot =  pygame.draw.rect(screen, (224,49,49), (800+3*(180),50 , Width, Height))
-	card2_bot =  pygame.draw.rect(screen, (224,49,49), (800-1*(180),50 , Width, Height))
-	card3_bot =  pygame.draw.rect(screen, (224,49,49), (800-2*(180),50 , Width, Height))
-	"""
 	user = Player(player_deck)
 	bot = Player(bot_deck)
 	for i in range(3):
 		user.add_card(user.draw())
 		bot.add_card(bot.draw())
-	update_hands(user,bot)
-	players_health = title_font.render(str(health_player), 1, (25,113,194))
-	text_rect_player = players_health.get_rect(center=(w*0.1,h*0.9))
-	screen.blit(players_health, text_rect_player)
-	enemy_health = title_font.render(str(health_enemy), 1, (224,49,49))
-	text_rect_enemy = enemy_health.get_rect(center=(w*0.9,h*0.1))
-	screen.blit(enemy_health, text_rect_enemy)
+	update_hands_hp(user,bot)
 	pygame.display.flip()
-	pos = pygame.mouse.get_pos()
-	pressed = pygame.mouse.get_pressed()[0]
-	turn = "Player"
-	round_num = 1
-	pygame.time.wait(5000)
-	while bot.check_hp() and user.check_hp() > 0:
-		if turn == "Player":
-			if round_num == 1:
-				user.add_card(user.draw())
-				update_hands(user,bot)
-				pygame.time.wait(5000)
-				turn = "Bot"
-			elif user.hand_size() <= 6:
-				user.add_card(user.draw())
-				while turn == "Player":
-					for card in enumerate(user.hand()):
-						card.card_clicked(pos,pressed,bot.hand(),user.hand())
-				update_hands(user,bot)
-				turn = "Bot"
-				pygame.time.wait(5)
-				pygame.display.flip()
-			else:
-				while turn == "Player":
-					for card in enumerate(user.hand):
-						card.card_clicked(pos,pressed,bot.check_hand(),user.hand())
-				pygame.time.wait(5)
-				pygame.display.flip()
-		elif turn == "Bot":
-			pygame.time.wait(5)
-			if bot.hand_size() <= 6:
-				bot.add_card(bot.draw())
-				chosen_card = random.choice(bot.hand())
-				play(chosen_card,user,bot)
-			else:
-				#play(chosen_card,round_num,user,bot))
-				print("")
-		else:
-			print("Bug")
-
-	if enemy_health < 0:
-		screen.fill((255,255,255))
-		win_text = windeath_font.render("You win!", True, (0,0,0))
-		text_rect_idk = win_text.get_rect(center=(w//2,h//2))
-		screen.blit(win_text, text_rect_idk)
-		pygame.display.flip()
-		pygame.time.wait(5)
-		game_state = "menu"
+	pygame.time.wait(2000)
+	while bot.check_hp() > 0 and user.check_hp() > 0:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				quit()
+		if bot.hand_size() < 5:
+			bot.add_card(bot.draw())
+		if user.hand_size() < 5:
+			user.add_card(user.draw())
+		update_hands_hp(user,bot)
+		user_card=user_input(user)
+		if user_card == "menu":
+			return "menu"
+		play(user_card,random.choice(bot.hand()),user,bot)
+		update_hands_hp(user,bot)
+	if user.check_hp() < 0:
+		win()
+		pygame.time.wait(5000)
+		return "menu"
 	else:
-		screen.fill((0,0,0))
-		win_text = windeath_font.render("You Lose!", True, (255,0,0))
-		text_rect_idk = win_text.get_rect(center=(w//2,h//2))
-		screen.blit(win_text, text_rect_idk)
-		pygame.display.flip()
-		pygame.time.wait(5)
-		game_state = "menu"
+		lose()
+		pygame.time.wait(5000)
+		return "menu"
 
 def options():
 	# See above explanmations, to be fleshed out later on to provide the user with a better experience.
@@ -200,7 +200,8 @@ while running:
 			Players_deck = game_cards_[:len(game_cards_)//2]
 			Bots_deck = game_cards_[len(game_cards_)//2:]
 			begin = False
-		main(Players_deck,Bots_deck)
+		if main(Players_deck,Bots_deck) == "menu":
+			game_state = "menu"		
 	elif game_state == "options":
 		options()
 	else:
