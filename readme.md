@@ -32,13 +32,14 @@ pip install -r requirements.txt
 
 ## Alternatively
 
-1. Download the repoistry and then open it in file explorer and doub
+1. Download the repoistry on github by clicking the CODE button before clicking download zip
 
-2. In your browser locate the downloads and double click on the zip folder. Unzip it
+2. In your browser locate the downloads and double click on the zip folder. Unzip it using windows inbuilt zip tools
 
 3. Then open the unzipped file in file explorer and double click on the exe file.
 
-4. You likely will have to say yes, I trust the exe from an unknown publisher. The exe will then run the program without needing any dependicies!
+4. You likely will have to say yes, I trust the exe from an unknown publisher. The exe will then run the program without needing any dependicies! (Technically needs the image folder but it will work as long as you dont move the exe away from it)
 
 ## Common Errors and Solutions
 - Imperfect but functioning game. I am working towards clearing up the game but most of the program is working correctly just going to make it easier to understand and use.
+- Occasionly your deck will run out and the program bugs out but this rarely happens as the AI doesn't last that long (will be fixed in sprint 4)

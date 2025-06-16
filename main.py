@@ -37,7 +37,6 @@ def lose():
 	text_rect_idk = win_text.get_rect(center=(w//2,h//2))
 	screen.blit(win_text, text_rect_idk)
 	pygame.display.flip()
-		
 
 def update_hands_hp(user,bot):
 	""" This function updates the users hands and hp
@@ -98,8 +97,7 @@ def user_input(user):
 					if rect.collidepoint(pos):
 						# Collidepoint then returning the card to the function
 						return vaule
-		
-		
+	
 def menu_draw():
 	""" Draws the menu screen for the game. 
 	The function is simply a cleaner way to call it when required as compared to dumping the text block inside the core loop.
@@ -234,6 +232,7 @@ while running:
 			begin = False
 		if main(Players_deck,Bots_deck) == "menu":
 			game_state = "menu"		
+			begin = True
 	elif game_state == "options":
 		options()
 	else:

@@ -336,11 +336,10 @@ The next stage of development must hit most if not all of the functional criteri
 
 # Sprint 2
 
-
 ## Design
 
 ### Structure Chart
-![Alt text](images/Main_flowchart.png)  
+![Alt text](images\Structure-chart.png)  
 
 ### Algorithms
 #### Main Routine
@@ -459,7 +458,6 @@ def lose():
 	text_rect_idk = win_text.get_rect(center=(w//2,h//2))
 	screen.blit(win_text, text_rect_idk)
 	pygame.display.flip()
-		
 
 def update_hands_hp(user,bot):
 	""" This function updates the users hands and hp
@@ -520,8 +518,7 @@ def user_input(user):
 					if rect.collidepoint(pos):
 						# Collidepoint then returning the card to the function
 						return vaule
-		
-		
+	
 def menu_draw():
 	""" Draws the menu screen for the game. 
 	The function is simply a cleaner way to call it when required as compared to dumping the text block inside the core loop.
@@ -656,6 +653,7 @@ while running:
 			begin = False
 		if main(Players_deck,Bots_deck) == "menu":
 			game_state = "menu"		
+			begin = True
 	elif game_state == "options":
 		options()
 	else:
@@ -945,23 +943,16 @@ def play(chosen_card,bot_card,player,bot):
 ## End of Sprint Review Questions
 1. Evaluate how effectively your project meets the functional and non-functional requirements defined in your planning. 
 
-Refer to specific criteria or expectations outlined in your requirements document.
-
-My  project effectively meets most of the functional and non functional criteria.
-
-
+My  project effectively meets most of the functional and non functional criteria. They can verse a bot in a fun and interactive GUI and play my card game (Joker's Judgement). The system has random drawing and deck splitting and you are able to keep track of your own health and inventory. The system clearly follows the rules that I laid out in rules.md and it clearly shows who won and lost. The program is responsive and reacts to the users clicks smooth and repsponsively processing all actions correctly. It is realiable and doesn't crash very often in my testing however the game is not easily understandable for someone who doesn't have a clear idea of the game rules. My rules due to the updates in how my card game is played are hard to read and not very understanable.
 
 2. Analyse the performance of your program against the key use-cases you identified.
+My program behaves as expected and handles the input and output of my program well. The program is not as clear and effective as I hoped however I will be able to develop
 
-Discuss whether the program behaves as expected and handles input/output as planned.
-
-My program behaves as expected and handles the input and output of my program well. 
 
 3. Assess the quality of your code in terms of readability, structure, and maintainability.
+My code is more readable however after updating pygame i am now recieving an error related to maintainbility* that would have to be fixed to enusre the long term functionality of my program. My naming conventions are slightly confusing as they have to be named in certain ways in order not to conflict with existing functions and lists. My comments are detailed and proide a solid understanding of my code. I am creating code that shouldn't much maintaining and relies upon well known python importds that are likely to go oboselte.
 
-Consider naming conventions, use of functions, comments, and overall organisation.
-
-My code is more readable however after updating pygame i am now recieving an error related to maintainbility that would have to be fixed to enusre the long term functionality of my program. My naming conventions are slightly s
+*This is the error
 ```
 UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   from pkg_resources import resource_stream, resource_exists
@@ -971,38 +962,17 @@ Include both feature enhancements and refinements to code quality or structure.
 In sprint 4, I need to continue refining my code quality and structure and develop a clearer user interface so that the game is easier to understand and use. I also want to add music into my game to give my game a more fun and cartoony feel.
 
 
-
-
-Sprint 3
-
+# Sprint 3
 ## Design
+## Class Diagram
+![Alt text](images/.png)  
 
-##
-
-
-
-
-
+No other changes to the code. Sprint 3 was merged into sprint 2 as we were allowed to begin OOP concepts earlier.
+## NO REALEASE FOR THIS SPRINT
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Sprint 4
+To begin
 
 
 
