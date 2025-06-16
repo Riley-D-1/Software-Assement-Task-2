@@ -30,13 +30,15 @@ pip install -r requirements.txt
 
 7. Once you are finished click the exit button (go to the menu by clicking ESC)
 
-## Alternatively (Not available for the first sprint)
+## Alternatively
 
-1. Locate the exe file and click the download icon on github after selecting it.
+1. Download the repoistry and then open it in file explorer and doub
 
-2. In your browser locate the downloads and double click on the program. 
+2. In your browser locate the downloads and double click on the zip folder. Unzip it
 
-3. You likely will have to say yes, I trust the exe from an unknown publisher. The exe will then run the program without needing any dependicies!
+3. Then open the unzipped file in file explorer and double click on the exe file.
+
+4. You likely will have to say yes, I trust the exe from an unknown publisher. The exe will then run the program without needing any dependicies!
 
 ## Common Errors and Solutions
 - Imperfect but functioning game. I am working towards clearing up the game but most of the program is working correctly just going to make it easier to understand and use.

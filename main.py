@@ -1,6 +1,5 @@
 import pygame
 from game_logic import *
-
 # Imports 
 
 # Set up pygame
@@ -9,7 +8,6 @@ programIcon = pygame.image.load('images/Icon.png') # Load the Icon
 pygame.display.set_icon(programIcon) # Set Icon
 pygame.display.set_caption("Joker's Judgement") # Set window title
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
-#screen = pygame.display.set_mode((450,450))
 
 # Establish screen size, font sizing and pygame clock
 w, h = pygame.display.get_surface().get_size()
@@ -20,8 +18,10 @@ clock = pygame.time.Clock()
 windeath_font = pygame.font.SysFont("segoeprint", int(h*0.1))
 clock.tick(60)
 
-
 def win():
+	"""
+	The win function simply displays a simple win screen
+	"""
 	screen.fill((255,255,255))
 	win_text = windeath_font.render("You win!", True, (0,0,0))
 	text_rect_idk = win_text.get_rect(center=(w//2,h//2))
@@ -29,20 +29,30 @@ def win():
 	pygame.display.flip()
 
 def lose():
-		screen.fill((0,0,0))
-		win_text = windeath_font.render("You Lose!", True, (255,0,0))
-		text_rect_idk = win_text.get_rect(center=(w//2,h//2))
-		screen.blit(win_text, text_rect_idk)
-		pygame.display.flip()
+	"""
+	The lose function simply displays a simple lose screen
+	"""
+	screen.fill((0,0,0))
+	win_text = windeath_font.render("You Lose!", True, (255,0,0))
+	text_rect_idk = win_text.get_rect(center=(w//2,h//2))
+	screen.blit(win_text, text_rect_idk)
+	pygame.display.flip()
 		
 
 def update_hands_hp(user,bot):
+	""" This function updates the users hands and hp
+	The function requires the user class and the bot class in order to function
+	The function does not return anything as it only updates the visual location and gamecards postions
+	
+	"""
 	user.card_list_ = []
 	screen.fill((47, 158, 68))
 	Height = h*0.175
 	Width = w*0.075
+	# The users's hand being drawn 
 	for i ,card in enumerate(user.hand(), start =int(user.hand_size()//2*-1)):
 		card_text_info = str(card)
+		# Modifing the string for the card
 		card_text_info = card_text_info.replace("(","")
 		card_text_info = card_text_info.replace(")","")
 		card_text_info = card_text_info.replace(",", " of",)
@@ -51,13 +61,11 @@ def update_hands_hp(user,bot):
 		card_info = card_font.render(str(card_text_info), 1, (0,0,0))
 		text_rect = card_info.get_rect(center=game_card.center)
 		screen.blit(card_info, text_rect)
+		# Store the position and card name for checking user input later.
 		user.card_list(game_card,card)
-		
-	pygame.display.flip()
-
+	# The bot's hand being drawn 
 	for i , card in enumerate(bot.hand(),start = int(user.hand_size()//2*-1)):
 		pygame.draw.rect(screen, (224,49,49), (w*0.5+i*(180),h*0.05 , Width, Height))
-	pygame.display.flip()
 	bot_hp = str(bot.check_hp())
 	user_hp = str(user.check_hp()) 
 	players_health = title_font.render(user_hp, 1, (25,113,194))
@@ -68,31 +76,27 @@ def update_hands_hp(user,bot):
 	screen.blit(enemy_health, text_rect_enemy)
 	pygame.display.flip()
 
-def filter_duplicates(dict):
-	seen = set()
-	filtered_list = []
-	for item in dict:
-		rect = item["rect"]
-		rect_tuple = (rect.x,rect.y,rect.width,rect.height)
-		if rect_tuple not in seen:
-			seen.add(rect_tuple)
-			filtered_list.append(item)
-	return filtered_list
-
 def user_input(user):
-	cards = filter_duplicates(user.card_list_info())
+	"""
+	The user input for the game is done below and returns the users choice
+	The user paramater is passed to it
+	"""
+	# Establishes user's cards and their location
+	cards = user.card_list_info()
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				quit()
 			elif event.type == pygame.MOUSEBUTTONDOWN:
+				# This is used so that the mouse button down is always checking and the pos collide only happens if a click occurs
 				pygame.display.flip()
 				pos = pygame.mouse.get_pos()
-				pressed = pygame.mouse.get_pressed()[0]
 				for card in cards:
+					# Splitting the vaules
 					rect = card['rect']
 					vaule = card['vaule']
-					if rect.collidepoint(pos) and pressed == True:
+					if rect.collidepoint(pos):
+						# Collidepoint then returning the card to the function
 						return vaule
 		
 		
@@ -124,43 +128,71 @@ def main(player_deck,bot_deck):
 
 	""" The main game function. 
 	The function is used to cleanly call the loop, as I said above. I will likely call other functions or change other things to a class in later sprints.
+	I pass the player deck and bot deck to it and then the program returns a gamestate at the end
 	"""
 	screen.fill((47, 158, 68))
-	Height = h*0.175
-	Width = w*0.075
+	#Height = h*0.175
+	#Width = w*0.075
 	"Draw pile will be in sprint 3 or 4? which is heavily limited."
 	#pygame.draw.rect(screen, (25,113,194), (20, 700, Width, Height))
 	#pygame.draw.rect(screen, (224,49,49), (1820, 300, Width, Height))
 	# TO be removed -
 	user = Player(player_deck)
 	bot = Player(bot_deck)
-	for i in range(3):
-		user.add_card(user.draw())
-		bot.add_card(bot.draw())
+	for i in range(2):
+		answer,drawn_card = bot.draw()
+		bot.add_card(drawn_card)
+		answer,drawn_card = user.draw()
+		user.add_card(drawn_card)
+		
 	update_hands_hp(user,bot)
 	pygame.display.flip()
-	pygame.time.wait(2000)
+	# The game loop that constantly checks if the hp is less than 0
 	while bot.check_hp() > 0 and user.check_hp() > 0:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				quit()
+			# So users can quit the game
 		if bot.hand_size() < 5:
-			bot.add_card(bot.draw())
+			# This is drawn if they have less than 5 cards and checks if their deck if empty and if so refreshes their deck with cards.
+			answer,drawn_card = bot.draw()
+			if answer == "empty":
+				Players_deck = drawn_card[:len(drawn_card)//2]
+				Bots_deck = drawn_card[len(drawn_card)//2:]
+				bot.new_deck(Bots_deck)
+				user.new_deck(Players_deck)
+				answer,drawn_card = bot.draw()
+				bot.add_card(drawn_card)
+			else:
+				bot.add_card(drawn_card)
 		if user.hand_size() < 5:
-			user.add_card(user.draw())
+			answer,drawn_card = user.draw()
+			# This is drawn if they have less than 5 cards and checks if their deck if empty and if so refreshes their deck with cards.
+			if	answer == "empty":
+				Players_deck = drawn_card[:len(drawn_card)//2]
+				Bots_deck = drawn_card[len(drawn_card)//2:]
+				bot.new_deck(Bots_deck)
+				user.new_deck(Players_deck)
+				answer,drawn_card = user.draw()
+				user.add_card(drawn_card)
+			else:
+				user.add_card(drawn_card)
+		# Updates their hands and hp 
 		update_hands_hp(user,bot)
+		# Wait for user_input
 		user_card=user_input(user)
-		if user_card == "menu":
-			return "menu"
 		play(user_card,random.choice(bot.hand()),user,bot)
 		update_hands_hp(user,bot)
-	if user.check_hp() < 0:
+	# Checks who won the game and runs the correct function to display the screen.
+	if user.check_hp() > 0:
 		win()
-		pygame.time.wait(5000)
+		pygame.time.wait(3000)
+		# returns that the thing is finished so  that the game returns to menu
 		return "menu"
 	else:
 		lose()
-		pygame.time.wait(5000)
+		pygame.time.wait(3000)
+		# returns that the thing is finished so  that the game returns to menu
 		return "menu"
 
 def options():

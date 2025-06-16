@@ -1,6 +1,5 @@
-import time as t
 import random
-
+# Import the required imports
 suits = [ "Hearts", "Diamonds", "Clubs", "Spades"]
 ranks = ("Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen","King")
 
@@ -80,11 +79,15 @@ class Player:
 	def hand_size(self):
 		return len(self.hand_)
 	def draw(self):
-		#if self.deck_ len greater than  one then
+		#Check if the deck is empty 
+		if len(self.deck_) == 0:
+			start()
+			game_cards_ = start()
+			return "empty",game_cards_
 		card = random.choice(self.deck_)
 		self.deck_.remove(card)
-		return card
-		# Else refill decks,
+		return "full",card
+		# Else refill decks
 	def wipe(self):
 		self.hand_.clear()
 		
@@ -102,6 +105,8 @@ class Player:
 				unique_list.append(item)
 		self.card_list_ = unique_list
 		return unique_list
+	def new_deck(self,deck):
+		self.deck_ = deck
 		
 def shuffle(game_cards):
 	random.shuffle(game_cards)
@@ -109,16 +114,23 @@ def shuffle(game_cards):
 
 # Game start logic
 def start():
+	""" 
+	The start of the game
+	I create the deck class and then return the shuffled deck to be split into the users draw pile and bots draw pile
+	"""
 	deck = Deck()
 	game_cards = deck.create_deck()
 	cards = shuffle(game_cards) 
 	return cards
 
 def play(chosen_card,bot_card,player,bot):
+	"""
+	The play function returns the winner and loser of the compared cards and removes it form the hands
+	It receives the classes of player and bot and also their chosen cards
+	If its an ability it updates the user with the abilities effect before returning nothing to signify to continue.
+	"""
 	chosen_card.type()
 	bot_card.type()
-	print(chosen_card.type())
-	print(bot_card.type())
 	if chosen_card.type() == "Number" and bot_card.type() == "Number":
 		if chosen_card.card_vaule() > bot_card.card_vaule():
 			discard_cards = bot_card 
@@ -133,13 +145,17 @@ def play(chosen_card,bot_card,player,bot):
 		elif chosen_card.card_vaule() == bot_card.card_vaule():
 			discard_cards = bot_card,chosen_card 
 			winning_card = None
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
 			return discard_cards,winning_card
-		
 		else:
 			print("Card comparision error")
 	elif chosen_card.type() == "Number" and bot_card.type() == "Ability":
 		if bot_card.card_ability() == "Jack":
-			bot.add_card(bot.draw())
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
 			bot.damage_hp(chosen_card.card_vaule())
 			player.remove_card(chosen_card)
 			bot.remove_card(bot_card)
@@ -160,7 +176,10 @@ def play(chosen_card,bot_card,player,bot):
 			bot.wipe()
 	elif chosen_card.type() == "Ability" and bot_card.type() == "Number":
 		if chosen_card.card_ability() == "Jack":
-			player.add_card(player.draw())
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
 			player.damage_hp(bot_card.card_vaule())
 			player.remove_card(chosen_card)
 			bot.remove_card(bot_card)
@@ -181,22 +200,30 @@ def play(chosen_card,bot_card,player,bot):
 			bot.wipe()
 	elif chosen_card.type() == "Ability" and bot_card.type() == "Ability":
 		if chosen_card.card_ability() == "Jack" and bot_card.card_ability() == "King":
-			player.add_card(player.draw())
-			player.add_card(player.draw())
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
 			player.damage_hp(5)
 			player.remove_card(chosen_card)
 			bot.remove_card(bot_card)
 		elif chosen_card.card_ability() == "Jack" and bot_card.card_ability() == "Queen":
-			player.add_card(player.draw())
-			player.add_card(player.draw())
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
 			bot.heal()
 			player.remove_card(chosen_card)
 			bot.remove_card(bot_card)
 		elif chosen_card.card_ability() == "Jack" and bot_card.card_ability() == "Jack":
-			player.add_card(player.draw())
-			player.add_card(player.draw())
-			bot.add_card(bot.draw())
-			bot.add_card(bot.draw())
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
 			player.remove_card(chosen_card)
 			bot.remove_card(bot_card)
 		elif chosen_card.card_ability() == "Queen" and bot_card.card_ability() == "King": 
@@ -211,8 +238,10 @@ def play(chosen_card,bot_card,player,bot):
 			bot.remove_card(bot_card)
 		elif chosen_card.card_ability() == "Queen" and bot_card.card_ability() == "Jack": 
 			player.heal()
-			bot.add_card(bot.draw())
-			bot.add_card(bot.draw())
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
 			player.remove_card(chosen_card)
 			bot.remove_card(bot_card)
 		elif chosen_card.card_ability() == "King" and bot_card.card_ability() == "King":
@@ -226,8 +255,11 @@ def play(chosen_card,bot_card,player,bot):
 			player.remove_card(chosen_card)
 			bot.remove_card(bot_card)
 		elif chosen_card.card_ability() == "King" and bot_card.card_ability() == "Jack": 
-			bot.add_card(bot.draw())
-			bot.add_card(bot.draw())
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			bot.damage_hp(5)
 			player.remove_card(chosen_card)
 			bot.remove_card(bot_card)
 		else:
