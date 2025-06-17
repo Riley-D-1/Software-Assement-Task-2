@@ -90,7 +90,6 @@ class Player:
 		# Else refill decks
 	def wipe(self):
 		self.hand_.clear()
-		
 	def remove_card(self,card):
 		if card in self.hand_:
 			self.hand_.remove(card)

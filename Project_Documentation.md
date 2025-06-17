@@ -941,34 +941,52 @@ def play(chosen_card,bot_card,player,bot):
 ```
 
 ## End of Sprint Review Questions
-1. Evaluate how effectively your project meets the functional and non-functional requirements defined in your planning. 
+1. Evaluate how effectively your project meets the functional and non-functional requirements defined in your planning.
 
-My  project effectively meets most of the functional and non functional criteria. They can verse a bot in a fun and interactive GUI and play my card game (Joker's Judgement). The system has random drawing and deck splitting and you are able to keep track of your own health and inventory. The system clearly follows the rules that I laid out in rules.md and it clearly shows who won and lost. The program is responsive and reacts to the users clicks smooth and repsponsively processing all actions correctly. It is realiable and doesn't crash very often in my testing however the game is not easily understandable for someone who doesn't have a clear idea of the game rules. My rules due to the updates in how my card game is played are hard to read and not very understanable.
+
+My  project effectively meets most of the functional and non functional criteria. They can browse a bot in a fun and interactive GUI and play my card game (Joker's Judgement). The system has random drawing and deck splitting and you are able to keep track of your own health and inventory. The system clearly follows the rules that I laid out in rules.md and it clearly shows who won and lost. The program is responsive and reacts to the user's clicks smoothly and responsively processing all actions correctly. It is reliable and doesn't crash very often in my testing however the game is not easily understandable for someone who doesn't have a clear idea of the game rules. My rules due to the updates in how my card game is played are hard to read and not very understandable. My program effectively meets most of the functional and non functional criteria defined in my planning.
+
 
 2. Analyse the performance of your program against the key use-cases you identified.
-My program behaves as expected and handles the input and output of my program well. The program is not as clear and effective as I hoped however I will be able to develop
+
+
+My program behaves as expected and handles the input and output of my program well. It hits most of the functional and non functional specifications and is only missing some clarity in some of the specifications I laid out. While my project is reaching most of the use cases the program is not as clear and effective as I hoped, however I will be able to develop features that improve, and help the user to effectively reach the key use cases I identified.  I have hit significantly more of the key use cases requirements when compared to my first sprint. I plan to continue my development to effectively reach all of the use cases and tick the specifications I laid out.
+
+
 
 
 3. Assess the quality of your code in terms of readability, structure, and maintainability.
-My code is more readable however after updating pygame i am now recieving an error related to maintainbility* that would have to be fixed to enusre the long term functionality of my program. My naming conventions are slightly confusing as they have to be named in certain ways in order not to conflict with existing functions and lists. My comments are detailed and proide a solid understanding of my code. I am creating code that shouldn't much maintaining and relies upon well known python importds that are likely to go oboselte.
+
+
+In this sprint the quality of code has improved, it is more readable and follows better coding practices which make my program nice and easy to update and maintain,
+However after updating pygame i am now receiving an error related to maintainability* that would have to be fixed to ensure the long term functionality of my program. My naming conventions are slightly confusing as they have to be named in certain ways in order not to conflict with existing functions and lists. My comments are detailed and provide a solid understanding of my code. I am creating code that shouldn't  need much maintenance and relies upon well known python importers that are likely to go obsolete. It also follows good practices and has a sensible structure for others to use and change my code.
+
 
 *This is the error
 ```
 UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   from pkg_resources import resource_stream, resource_exists
 ```
+
+
 4. Explain the improvements that should be made in the next stage of development.
-Include both feature enhancements and refinements to code quality or structure.
-In sprint 4, I need to continue refining my code quality and structure and develop a clearer user interface so that the game is easier to understand and use. I also want to add music into my game to give my game a more fun and cartoony feel.
+
+
+In sprint 4, I need to continue refining my code quality and structure and develop a clearer user interface so that the game is easier to understand and use. I also want to add music into my game to give my game a more fun and cartoony feel. I need to add in options to give users customisability with the game and also have inbuilt access to the help menu and guides laid out.
+
+
 
 
 # Sprint 3
 ## Design
 ## Class Diagram
-![Alt text](images/.png)  
+![Alt text](images/Class_diagram.png)  
+
 
 No other changes to the code. Sprint 3 was merged into sprint 2 as we were allowed to begin OOP concepts earlier.
-## NO REALEASE FOR THIS SPRINT
+## NO RELEASE FOR THIS SPRINT
+
+
 
 
 # Sprint 4
@@ -977,9 +995,9 @@ To begin
 
 
 
-
-
 ## Credit
+
+
 
 
 The Icon inspiration comes from https://drawsgood.itch.io/8bit-deck-card-assets.
