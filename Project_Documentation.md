@@ -990,7 +990,14 @@ No other changes to the code. Sprint 3 was merged into sprint 2 as we were allow
 
 
 # Sprint 4
-To begin
+# Design
+
+# Potential enchancements
+I want to add a feature in the play function that shows 
+# Intergration Process
+
+# Structure Chart and Class diagram updates.
+## Neither are getting updated as they still effectively communicate my code at the beginning of Sprint 4.
 
 
 
@@ -1002,3 +1009,10 @@ To begin
 
 The Icon inspiration comes from https://drawsgood.itch.io/8bit-deck-card-assets.
 I made my own much smaller version that was heavily influenced by the asset.
+
+
+
+MUSIC CREDIT 
+Track: Get After It
+Music by https://www.fiftysounds.com
+

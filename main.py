@@ -1,11 +1,19 @@
 import pygame
 from game_logic import *
+import random
+import webbrowser
 # Imports 
 
 # Set up pygame
 pygame.init()
-programIcon = pygame.image.load('images/Icon.png') # Load the Icon
-pygame.display.set_icon(programIcon) # Set Icon
+try:
+	programIcon = pygame.image.load('images/Icon.png') # Load the Icon
+	pygame.display.set_icon(programIcon) # Set Icon
+	main_music = pygame.mixer.Sound('music\Get After It.mp3')
+	music = True
+except FileNotFoundError:
+	print("Image not found")
+	music = False
 pygame.display.set_caption("Joker's Judgement") # Set window title
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
 
@@ -129,8 +137,6 @@ def main(player_deck,bot_deck):
 	I pass the player deck and bot deck to it and then the program returns a gamestate at the end
 	"""
 	screen.fill((47, 158, 68))
-	#Height = h*0.175
-	#Width = w*0.075
 	"Draw pile will be in sprint 3 or 4? which is heavily limited."
 	#pygame.draw.rect(screen, (25,113,194), (20, 700, Width, Height))
 	#pygame.draw.rect(screen, (224,49,49), (1820, 300, Width, Height))
@@ -194,18 +200,214 @@ def main(player_deck,bot_deck):
 		return "menu"
 
 def options():
+	width = w*0.6
+	height = h*0.11
 	# See above explanmations, to be fleshed out later on to provide the user with a better experience.
 	screen.fill((47, 158, 68))
-	filler = title_font.render("Options Coming Soon", 1, (255,255,255))
+	filler = title_font.render("Options", 1, (255,255,255))
+	Music_toggle = pygame.draw.rect(screen, (255, 255, 255), ((w-width)//2, (h*0.40), width, height))
+	Help = pygame.draw.rect(screen, (255, 255, 255), ((w-width)//2, (h*0.55), width, height))
+	Source = pygame.draw.rect(screen, (255, 255, 255), ((w-width)//2, (h*0.70), width, height))
+	Main_menu = pygame.draw.rect(screen, (255, 255, 255), ((w-width)//2, (h*0.85), width, height))
 	text_rect_2 = filler.get_rect(center=(w//2,h*0.125))
 	screen.blit(filler, text_rect_2)
 	pygame.display.flip()
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			quit()
+		elif pygame.key.get_pressed()[pygame.K_ESCAPE]:
+			game_state = "menu"
+			return game_state
+		elif event.type == pygame.MOUSEBUTTONDOWN:
+				# This is used so that the mouse button down is always checking and the pos collide only happens if a click occurs
+				pygame.display.flip()
+				pos = pygame.mouse.get_pos()
+				if Music_toggle.collidepoint(pos):
+					# Collidepoint then returning the card to the function
+					return "music"
+				elif Help.collidepoint(pos):
+					webbrowser.open("https://github.com/Riley-D-1/Software-Assement-Task-2/blob/main/readme.md")
+					return "web"
+				elif Source.collidepoint(pos):
+					webbrowser.open("https://github.com/Riley-D-1/Software-Assement-Task-2")
+					return "web"
+				elif Main_menu.collidepoint(pos):
+					return "menu"
+
+def play(chosen_card,bot_card,player,bot):
+	"""
+	The play function returns the winner and loser of the compared cards and removes it form the hands
+	It receives the classes of player and bot and also their chosen cards
+	If its an ability it updates the user with the abilities effect before returning nothing to signify to continue.
+	"""
+	Height = h*0.175
+	Width = w*0.075
+	chosen_card.type()
+	bot_card.type()
+	"""
+	card_text_info = str(chosen_card)
+	print(card_text_info)
+	# Modifing the string for the card
+	card_text_info = card_text_info.replace("(","")
+	card_text_info = card_text_info.replace(")","")
+	card_text_info = card_text_info.replace(",", " of",)
+	card_text_info = card_text_info.replace("'", "")
+	print(card_text_info)
+	played_card = pygame.draw.rect(screen, (255,255,255),w//2,h*0.5, Width, Height)
+	card_info = card_font.render(str(card_text_info), 1, (0,0,0))
+	text_rect = card_info.get_rect(center=played_card.center)
+	screen.blit(played_card, text_rect)
+	"""
+	pygame.display.flip()
+	if chosen_card.type() == "Number" and bot_card.type() == "Number":
+		if chosen_card.card_vaule() > bot_card.card_vaule():
+			discard_cards = bot_card 
+			winning_card = chosen_card
+			bot.remove_card(bot_card)
+			return discard_cards,winning_card
+		elif chosen_card.card_vaule() < bot_card.card_vaule():
+			discard_cards = chosen_card 
+			winning_card = bot_card
+			player.remove_card(chosen_card)
+			return discard_cards,winning_card
+		elif chosen_card.card_vaule() == bot_card.card_vaule():
+			discard_cards = bot_card,chosen_card 
+			winning_card = None
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+			return discard_cards,winning_card
+		else:
+			print("Card comparision error")
+	elif chosen_card.type() == "Number" and bot_card.type() == "Ability":
+		if bot_card.card_ability() == "Jack":
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			bot.damage_hp(chosen_card.card_vaule())
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif bot_card.card_ability() == "King":
+			player.damage_hp(5)
+			bot.damage_hp(chosen_card.card_vaule())
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif bot_card.card_ability() == "Queen":
+			bot.heal()
+			bot.damage_hp(chosen_card.card_vaule())
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		else:
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+			player.wipe()
+			bot.wipe()
+	elif chosen_card.type() == "Ability" and bot_card.type() == "Number":
+		if chosen_card.card_ability() == "Jack":
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			player.damage_hp(bot_card.card_vaule())
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "King":
+			bot.damage_hp(5)
+			player.damage_hp(bot_card.card_vaule())
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "Queen":
+			player.heal()
+			player.damage_hp(bot_card.card_vaule())
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		else:
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+			player.wipe()
+			bot.wipe()
+	elif chosen_card.type() == "Ability" and bot_card.type() == "Ability":
+		if chosen_card.card_ability() == "Jack" and bot_card.card_ability() == "King":
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			player.damage_hp(5)
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "Jack" and bot_card.card_ability() == "Queen":
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			bot.heal()
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "Jack" and bot_card.card_ability() == "Jack":
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = player.draw()
+			player.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "Queen" and bot_card.card_ability() == "King": 
+			player.heal()
+			player.damage_hp(5)
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "Queen" and bot_card.card_ability() == "Queen": 
+			player.heal()
+			player.damage_hp(5)
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "Queen" and bot_card.card_ability() == "Jack": 
+			player.heal()
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "King" and bot_card.card_ability() == "King":
+			player.damage_hp(5)
+			bot.damage_hp(5)
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "King" and bot_card.card_ability() == "Queen": 
+			bot.damage_hp(5)
+			bot.heal()
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		elif chosen_card.card_ability() == "King" and bot_card.card_ability() == "Jack": 
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			answer,drawn_card = bot.draw()
+			bot.add_card(drawn_card)
+			bot.damage_hp(5)
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+		else:
+			player.remove_card(chosen_card)
+			bot.remove_card(bot_card)
+			player.wipe()
+			bot.wipe()
+	else:
+		print("Bug, no type logic registered correctly")
 
 # Main game loop that calls the diffrent functions to navigate through.
 game_state = "menu"
 running = True
 begin = True
 while running:
+	if music == True:
+		try:
+			main_music.play(-1)
+		except:
+			music = False
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			running = False
@@ -234,7 +436,20 @@ while running:
 			game_state = "menu"		
 			begin = True
 	elif game_state == "options":
-		options()
+		options_result = options()
+		pygame.display.flip()
+		if options_result == "menu":
+			pygame.time.wait(250)
+			game_state = "menu"	
+		elif options_result == "web":
+			game_state = "menu"
+		elif options_result == "music":
+			if music == True:
+				music = False
+				game_state = "menu"
+			else: 
+				music = True
+				game_state = "menu"
 	else:
 		# Error handling but should never happen
 		print("How did you escape the matrix?")
