@@ -993,7 +993,9 @@ No other changes to the code. Sprint 3 was merged into sprint 2 as we were allow
 # Design
 
 # Potential enchancements
-I want to add a feature in the play function that shows 
+I want to add a feature in the play function that shows the actions 
+I wanted to build on this by having text that explains what happens in that round when when a setting is turned on which makes it more acessible to a wider audience. I also wanted to add 
+
 # Intergration Process
 
 # Structure Chart and Class diagram updates.
