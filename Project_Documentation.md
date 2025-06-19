@@ -297,7 +297,7 @@ The next stage of development must hit most if not all of the functional criteri
 ## Design
 
 ### Structure Chart
-![Alt text](images\Structure-chart.png)  
+![Alt text](images/Structure-chart.png)  
 
 ## Algorithms
 ### Main Routine
@@ -330,7 +330,7 @@ END Joker's Judement
 ### Game loop Subroutinue
 
 ### Flowchart
-![Alt text](images\Game_loop_flowchart.png) 
+![Alt text](images/Game_loop_flowchart.png) 
 
 ### Psudeocode
 ```
