@@ -1,8 +1,5 @@
-# Software-Assessment-Task-1
-### Data Science Assessment Task: Joker's Judgement
-## Objective
-Play a fun card game designed by me agaist abot in fun and interactive GUI!
-
+# Software Assessment Task 2: Joker's Judgement
+### A fun and interactive card game (card game made by me) using pygame! 
 ## Requirements
 Pygame:
 - A python library for making video games in python.
@@ -15,7 +12,7 @@ Pygame:
 ```
 pip install -r requirements.txt
 ```
-*Optional* If an upgrade pip prompt appears in your terminal, I heavily recommend you update it by copy and pasting the command there.
+*Optional* : If an upgrade pip prompt appears in your terminal, I heavily recommend you update it by copy and pasting the command there.
 
 4. Click the run button in your preferred IDE (In main.py) and then give the program a second.
 
@@ -23,13 +20,15 @@ pip install -r requirements.txt
 
 6. The program is running and you can navigate around the GUI. 
 
-7. Once you are finished click the exit button (go to the menu by clicking ESC)
+7. Once you are finished click the exit button like you would on a normal window or click the quit button (go to the menu by clicking ESC*)
+
+*Won't work when playing card game, hold alt tab and then move your mouse over the window's X and click to stop it.
 
 ## Alternatively
 
-1. Download the repoistry on github by clicking the CODE button before clicking download zip
+1. Download the repoistry on github by clicking the CODE button before clicking download zip.
 
-2. In your browser locate the downloads and double click on the zip folder. Unzip it using windows inbuilt zip tools
+2. In your browser locate the downloads and double click on the zip folder. Unzip it using windows inbuilt zip tools.
 
 3. Then open the unzipped file in file explorer and double click on the exe file.
 
@@ -38,5 +37,13 @@ pip install -r requirements.txt
 ## Common Errors and Solutions
 - Sometimes if you alt tab out of the game you will recieve a small visual glitch. The screen will turn black besides for some of the cards for a brief period of time untill the program does it's next screen refresh.
     - No solution: Just Avoid trying to alt tab while playing the game.
+
 - I don't understand how to play the actual card game. 
-    - I have laid out the rules in rules.md and you are able to turn on help hints in options to allow the program to work at a higher level.
+    - I have laid out the rules in rules.md and you are able to turn on help hints in options to allow the program to explain what is happening each round and slows down the logic phase.
+## Credit to
+The Icon inspiration comes from https://drawsgood.itch.io/8bit-deck-card-assets.
+I made my own much smaller version that was heavily influenced by the asset.
+
+MUSIC CREDIT
+Track: Get After It
+Music by https://www.fiftysounds.com
