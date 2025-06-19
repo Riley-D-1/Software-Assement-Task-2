@@ -1,12 +1,7 @@
 # Software-Assessment-Task-1
 ### Data Science Assessment Task: Joker's Judgement
 ## Objective
-TBC
-
-
-## Features
-- TBC
-
+Play a fun card game designed by me agaist abot in fun and interactive GUI!
 
 ## Requirements
 Pygame:
@@ -41,5 +36,7 @@ pip install -r requirements.txt
 4. You likely will have to say yes, I trust the exe from an unknown publisher. The exe will then run the program without needing any dependicies! (Technically needs the image folder but it will work as long as you dont move the exe away from it)
 
 ## Common Errors and Solutions
-- Imperfect but functioning game. I am working towards clearing up the game but most of the program is working correctly just going to make it easier to understand and use.
-- Occasionly your deck will run out and the program bugs out but this rarely happens as the AI doesn't last that long (will be fixed in sprint 4)
+- Sometimes if you alt tab out of the game you will recieve a small visual glitch. The screen will turn black besides for some of the cards for a brief period of time untill the program does it's next screen refresh.
+    - No solution: Just Avoid trying to alt tab while playing the game.
+- I don't understand how to play the actual card game. 
+    - I have laid out the rules in rules.md and you are able to turn on help hints in options to allow the program to work at a higher level.

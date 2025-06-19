@@ -109,9 +109,6 @@ Main Flow:
 
 Postconditions: Turn changes to the system , the user draws a card and play's a card.
 
-
-
-
 ## Design
 Storyboard
 ![Alt text](images/Storyboard.png)  
@@ -994,13 +991,18 @@ No other changes to the code. Sprint 3 was merged into sprint 2 as we were allow
 
 # Potential enchancements
 I want to add a feature in the play function that shows the actions 
-I wanted to build on this by having text that explains what happens in that round when when a setting is turned on which makes it more acessible to a wider audience. I also wanted to add 
+I wanted to build on this by having text that explains what happens in that round when when a setting is turned on which makes it more acessible to a wider audience. I also wanted to add music to give the game a more cartony and fun feel.
 
 # Intergration Process
+I will intergrate features by moving functions around for ease of use, i also will modify my empty options and rework the function so it can pass the results of my program.
 
 # Structure Chart and Class diagram updates.
 ## Neither are getting updated as they still effectively communicate my code at the beginning of Sprint 4.
 
+
+Peer review miles 
+The program has amazing Music, that highly improves the games atmosphere, and makes playing very enjoyable. The games artwork is also incredible, making it extremely clear which card does what. Furthermore, the game hints are extremely useful when learning the game. The only negative of the game is the UI is very bare on some screens, while this does make it extemely practical in terms of figuring out what to do and how to use the program, it limits the games atmposphere. In a future revsion, with a very simple background change with a bit more variation, it would greatly improve the user experience. 
+Even with these Critiques, the game is extremely enjoyable, and is extremly fun to use and play.
 
 
 
@@ -1011,7 +1013,6 @@ I wanted to build on this by having text that explains what happens in that roun
 
 The Icon inspiration comes from https://drawsgood.itch.io/8bit-deck-card-assets.
 I made my own much smaller version that was heavily influenced by the asset.
-
 
 
 MUSIC CREDIT 

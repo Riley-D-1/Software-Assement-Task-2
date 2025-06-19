@@ -90,7 +90,7 @@ def update_hands_hp(user,bot):
 	text_rect_enemy = enemy_health.get_rect(center=(w*0.9,h*0.1))
 	screen.blit(enemy_health, text_rect_enemy)
 	# Name titles 
-	players_name = title_font.render("(You)", 1, (25,113,194))
+	players_name = title_font.render("You", 1, (25,113,194))
 	text_rect_player_name = players_name.get_rect(center=(w*0.9,h*0.9))
 	screen.blit(players_name, text_rect_player_name)
 	enemy_name= title_font.render("Bot", 1, (224,49,49))
@@ -213,9 +213,11 @@ def main(player_deck,bot_deck,help_info):
 		return "menu"
 
 def options():
+	"""
+	Options is called and does not need any params it returns which button is clicked so that the program can change what happened.
+	"""
 	width = w*0.6
 	height = h*0.11
-	# See above explanmations, to be fleshed out later on to provide the user with a better experience.
 	screen.fill((47, 158, 68))
 	filler = title_font.render("Options", 1, (255,255,255))
 	Music_toggle = pygame.draw.rect(screen, (255, 255, 255), ((w-width)//2, (h*0.40), width, height))
@@ -518,7 +520,6 @@ def play(chosen_card,bot_card,player,bot,help_info):
 	else:
 		pygame.display.flip()
 		pygame.time.wait(2000)
-
 
 # Main game loop that calls the diffrent functions to navigate through.
 game_state = "menu"

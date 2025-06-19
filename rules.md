@@ -4,8 +4,8 @@
 2. Split the deck (with the Jokers) evenly for all the players.
 3. Place the evenly split deck in each player's draw pile face down.
 4. Each Player will now draw 3 Cards keeping them hidden from the other players
-5. Decide who is going first. This is the player's choice but an easy way to decide is the person to the right of the person who shuffled the deck. (In the first round everyone but the last player misses the attack phase)
-6. Use some kind of counter (Dice is a good option) to keep track of everyone HP which starts on 20
+5. Decide who is going first. This is the player's choice but an easy way to decide is the person to the right of the person who shuffled the deck.
+6. Use some kind of counter (Dice is a good option) to keep track of everyone HP which starts on 20.
 ## Gameplay:
 On your turn:
 1. Draw 1 card from your pile (This will be auto done in my game)
@@ -23,10 +23,8 @@ Play continues clockwise.
 - Worth 10 in vaule
 - Stronger than most, he's a big boi juggernaut who is almost unkillable
 ## Ability Cards (K, Q, J, Joker)
-
-
 #### King (K):
-- You deal 5 damage to the opponet
+- You deal 5 damage to the opponet.
 -  Careful, might take some damage of your own in the process.
 #### Queen (Q):
 - Heals for 5 hp.
@@ -38,16 +36,14 @@ Play continues clockwise.
 - When played it's a board wipe
 - **All cards in player's hands** are discarded
 - HP and draw piles for the players remains the same
+- Your other cards are not taken in cosideration, their effects or damage do not apply.
 - This is the "Nuke the board". Unleash it at your own risk (friendships/relationships may be part of the explosion)
-
-
-
 
 ## How to Win:
 ### Last player standing wins
 Player elimination:
 - Each player starts with 20 hp
-- When a player reaches equal to or less than 0 (see attack and defense for how you deal and defend against damage), they lose. If you both lose on the same round play rock paper scissors to decide. (Player loses by default in my game as the artificial intelligence isn't very smart)
+- When a player reaches equal to or less than 0 (see attack and defense for how you deal and defend against damage), they lose. If you both lose on the same round play rock paper scissors to decide. (Player loses by default in my game as the artificial intelligence isn't very smart and this leads to a more balanced game)
 
 
 ## Combat and defense
@@ -58,7 +54,7 @@ If no number card is played by one of the players :
 
 If one player plays a number card and the other an ability:
 - The player who played the ability gets the abilities effect 
-- The player with the number card deals damage to the other player
+- The player with the number card deals damage to the other player's hp
 
 If both play a number card :
 - Compare face value
@@ -69,4 +65,4 @@ If both play a number card :
 
 
 ## Additional Rules:
-If you reach the bottom of your pile simply shuffle all cards in the discard and place them face down in your draw pile and then continue playing
+If you reach the bottom of your pile simply shuffle all cards in the discard and place them face down in your draw pile and then continue playing.
